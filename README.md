@@ -8,7 +8,11 @@ batched direct debit transactions.
 
 It will work in the browser or using node.js. To use it in the browser, just
 include it via script-tag and access through the `SEPA` variable. For node, see
-the example below. You can find live examples in the `examples` directory.
+the example below.
+
+You can also try the [live online generator](http://kewisch.github.io/sepa.js/examples/web.html).
+If you are worried about account number safety, be assured that everything is
+calculated client side. Check the source code if you don't trust me.
 
 If you have extended sepa.js for a different purpose, please contribute the code
 either via email or ideally as a pull request. If you are missing something,
