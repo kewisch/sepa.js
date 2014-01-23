@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>sepa.js by kewisch</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>sepa.js</h1>
+        <p>Create and validate SEPA XML transactions</p>
+
+        <p class="view"><a href="https://github.com/kewisch/sepa.js">View the Project on GitHub <small>kewisch/sepa.js</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/kewisch/sepa.js/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/kewisch/sepa.js/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/kewisch/sepa.js">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="welcome-to-sepajs" class="anchor" href="#welcome-to-sepajs"><span class="octicon octicon-link"></span></a>Welcome to sepa.js</h1>
+
+<p>This library can be used to generate the XML structure used
+for <a href="http://en.wikipedia.org/wiki/Single_Euro_Payments_Area">SEPA</a> payment
+transfers. It is currently in its early stages and mostly geared towards German
+batched direct debit transactions.</p>
+
+<p>It will work in the browser or using node.js. To use it in the browser, just
+include it via script-tag and access through the <code>SEPA</code> variable. For node, see
+the example below. You can find live examples in the <code>examples</code> directory.</p>
+
+<p>If you have extended sepa.js for a different purpose, please contribute the code
+either via email or ideally as a pull request. If you are missing something,
+please create an issue.</p>
+
+<ul>
+<li>Each SEPA document contains exactly one group header, accessible via the <code>grpHdr</code> property.</li>
+<li>You can add multiple paymentInfo blocks to a document, i.e one per sequenceType (FRST/RCUR)</li>
+<li>A payment info block can contain multiple transactions.</li>
+</ul><h2>
+<a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example</h2>
+
+<p>Here is a simple node.js example:</p>
+
+<div class="highlight highlight-javascript"><pre>    <span class="kd">var</span> <span class="nx">SEPA</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"sepa"</span><span class="p">);</span>
+
+    <span class="kd">var</span> <span class="nx">doc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SEPA</span><span class="p">.</span><span class="nx">Document</span><span class="p">();</span>
+    <span class="nx">doc</span><span class="p">.</span><span class="nx">grpHdr</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="s2">"XMPL.20140201.TR0"</span><span class="p">;</span>
+    <span class="nx">doc</span><span class="p">.</span><span class="nx">grpHdr</span><span class="p">.</span><span class="nx">created</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+    <span class="nx">doc</span><span class="p">.</span><span class="nx">grpHdr</span><span class="p">.</span><span class="nx">initiatorName</span> <span class="o">=</span> <span class="s2">"Example LLC"</span><span class="p">;</span>
+
+    <span class="kd">var</span> <span class="nx">info</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SEPA</span><span class="p">.</span><span class="nx">PaymentInfo</span><span class="p">();</span>
+    <span class="nx">info</span><span class="p">.</span><span class="nx">collectionDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+    <span class="nx">info</span><span class="p">.</span><span class="nx">creditorIBAN</span> <span class="o">=</span> <span class="s2">"DE87123456781234567890"</span><span class="p">;</span>
+    <span class="nx">info</span><span class="p">.</span><span class="nx">creditorBIC</span> <span class="o">=</span> <span class="s2">"XMPLDEM0XXX"</span><span class="p">;</span>
+    <span class="nx">info</span><span class="p">.</span><span class="nx">creditorName</span> <span class="o">=</span> <span class="s2">"Example LLC"</span><span class="p">;</span>
+    <span class="nx">info</span><span class="p">.</span><span class="nx">creditorId</span> <span class="o">=</span> <span class="s2">"DE98ZZZ09999999999"</span><span class="p">;</span>
+    <span class="nx">doc</span><span class="p">.</span><span class="nx">addPaymentInfo</span><span class="p">(</span><span class="nx">info</span><span class="p">);</span>
+
+    <span class="kd">var</span> <span class="nx">tx</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SEPA</span><span class="p">.</span><span class="nx">Transaction</span><span class="p">();</span>
+    <span class="nx">tx</span><span class="p">.</span><span class="nx">debitorName</span> <span class="o">=</span> <span class="s2">"Example Customer"</span><span class="p">;</span>
+    <span class="nx">tx</span><span class="p">.</span><span class="nx">debitorIBAN</span> <span class="o">=</span> <span class="s2">"DE40987654329876543210"</span><span class="p">;</span>
+    <span class="nx">tx</span><span class="p">.</span><span class="nx">debitorBIC</span> <span class="o">=</span> <span class="s2">"CUSTDEM0XXX"</span><span class="p">;</span>
+    <span class="nx">tx</span><span class="p">.</span><span class="nx">mandateId</span> <span class="o">=</span> <span class="s2">"XMPL.CUST487.2014"</span>
+    <span class="nx">tx</span><span class="p">.</span><span class="nx">mandateSignatureDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="s2">"2014-02-01"</span><span class="p">);</span>
+    <span class="nx">tx</span><span class="p">.</span><span class="nx">amount</span> <span class="o">=</span> <span class="mf">50.23</span><span class="p">;</span>
+    <span class="nx">tx</span><span class="p">.</span><span class="nx">remittanceInfo</span> <span class="o">=</span> <span class="s2">"INVOICE 54"</span><span class="p">;</span>
+    <span class="nx">tx</span><span class="p">.</span><span class="nx">end2endId</span> <span class="o">=</span> <span class="s2">"XMPL.CUST487.INVOICE.54"</span><span class="p">;</span>
+    <span class="nx">info</span><span class="p">.</span><span class="nx">addTransaction</span><span class="p">(</span><span class="nx">tx</span><span class="p">);</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">doc</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+</pre></div>
+
+<h3>
+<a name="xml-result" class="anchor" href="#xml-result"><span class="octicon octicon-link"></span></a>XML Result</h3>
+
+<div class="highlight highlight-xml"><pre>    <span class="cp">&lt;?xml version="1.0"?&gt;</span>
+    <span class="nt">&lt;Document</span> <span class="na">schemaLocation=</span><span class="s">"urn:iso:std:iso:20022:tech:xsd:pain.008.003.02 pain.008.003.02.xsd"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;CstmrDrctDbtInitn&gt;</span>
+        <span class="nt">&lt;GrpHdr&gt;</span>
+          <span class="nt">&lt;MsgId&gt;</span>XMPL.20140201.TR0<span class="nt">&lt;/MsgId&gt;</span>
+          <span class="nt">&lt;CreDtTm&gt;</span>2014-01-23T19:16:10.285Z<span class="nt">&lt;/CreDtTm&gt;</span>
+          <span class="nt">&lt;NbOfTxs&gt;</span>1<span class="nt">&lt;/NbOfTxs&gt;</span>
+          <span class="nt">&lt;CtrlSum&gt;</span>50.23<span class="nt">&lt;/CtrlSum&gt;</span>
+          <span class="nt">&lt;InitgPty&gt;</span>
+            <span class="nt">&lt;Nm&gt;</span>Example LLC<span class="nt">&lt;/Nm&gt;</span>
+          <span class="nt">&lt;/InitgPty&gt;</span>
+        <span class="nt">&lt;/GrpHdr&gt;</span>
+        <span class="nt">&lt;PmtInf&gt;</span>
+          <span class="nt">&lt;PmtInfId&gt;</span>XMPL.20140201.TR0.0<span class="nt">&lt;/PmtInfId&gt;</span>
+          <span class="nt">&lt;PmtMtd&gt;</span>DD<span class="nt">&lt;/PmtMtd&gt;</span>
+          <span class="nt">&lt;BtchBookg&gt;</span>true<span class="nt">&lt;/BtchBookg&gt;</span>
+          <span class="nt">&lt;NbOfTxs&gt;</span>1<span class="nt">&lt;/NbOfTxs&gt;</span>
+          <span class="nt">&lt;CtrlSum&gt;</span>50.23<span class="nt">&lt;/CtrlSum&gt;</span>
+          <span class="nt">&lt;PmtTpInf&gt;</span>
+            <span class="nt">&lt;SvcLvl&gt;</span>
+              <span class="nt">&lt;Cd&gt;</span>SEPA<span class="nt">&lt;/Cd&gt;</span>
+            <span class="nt">&lt;/SvcLvl&gt;</span>
+            <span class="nt">&lt;LclInstrm&gt;</span>
+              <span class="nt">&lt;Cd&gt;</span>CORE<span class="nt">&lt;/Cd&gt;</span>
+            <span class="nt">&lt;/LclInstrm&gt;</span>
+            <span class="nt">&lt;SeqTp&gt;</span>FRST<span class="nt">&lt;/SeqTp&gt;</span>
+          <span class="nt">&lt;/PmtTpInf&gt;</span>
+          <span class="nt">&lt;ReqdColltnDt&gt;</span>2014-01-23<span class="nt">&lt;/ReqdColltnDt&gt;</span>
+          <span class="nt">&lt;Cdtr&gt;</span>
+            <span class="nt">&lt;Nm&gt;</span>Example LLC<span class="nt">&lt;/Nm&gt;</span>
+          <span class="nt">&lt;/Cdtr&gt;</span>
+          <span class="nt">&lt;CdtrAcct&gt;</span>
+            <span class="nt">&lt;Id&gt;</span>
+              <span class="nt">&lt;IBAN&gt;</span>DE87123456781234567890<span class="nt">&lt;/IBAN&gt;</span>
+            <span class="nt">&lt;/Id&gt;</span>
+          <span class="nt">&lt;/CdtrAcct&gt;</span>
+          <span class="nt">&lt;CdtrAgt&gt;</span>
+            <span class="nt">&lt;FinInstnId&gt;</span>
+              <span class="nt">&lt;BIC&gt;</span>XMPLDEM0XXX<span class="nt">&lt;/BIC&gt;</span>
+            <span class="nt">&lt;/FinInstnId&gt;</span>
+          <span class="nt">&lt;/CdtrAgt&gt;</span>
+          <span class="nt">&lt;ChrgBr&gt;</span>SLEV<span class="nt">&lt;/ChrgBr&gt;</span>
+          <span class="nt">&lt;CdtrSchmeId&gt;</span>
+            <span class="nt">&lt;Id&gt;</span>
+              <span class="nt">&lt;PrvtId&gt;</span>
+                <span class="nt">&lt;Othr&gt;</span>
+                  <span class="nt">&lt;Id&gt;</span>DE98ZZZ09999999999<span class="nt">&lt;/Id&gt;</span>
+                  <span class="nt">&lt;SchmeNm&gt;</span>
+                    <span class="nt">&lt;Prtry&gt;</span>SEPA<span class="nt">&lt;/Prtry&gt;</span>
+                  <span class="nt">&lt;/SchmeNm&gt;</span>
+                <span class="nt">&lt;/Othr&gt;</span>
+              <span class="nt">&lt;/PrvtId&gt;</span>
+            <span class="nt">&lt;/Id&gt;</span>
+          <span class="nt">&lt;/CdtrSchmeId&gt;</span>
+          <span class="nt">&lt;DrctDbtTxInf&gt;</span>
+            <span class="nt">&lt;PmtId&gt;</span>
+              <span class="nt">&lt;EndToEndId&gt;</span>XMPL.CUST487.INVOICE.54<span class="nt">&lt;/EndToEndId&gt;</span>
+            <span class="nt">&lt;/PmtId&gt;</span>
+            <span class="nt">&lt;InstdAmt</span> <span class="na">Ccy=</span><span class="s">"EUR"</span><span class="nt">&gt;</span>50.23<span class="nt">&lt;/InstdAmt&gt;</span>
+            <span class="nt">&lt;DrctDbtTx&gt;</span>
+              <span class="nt">&lt;MndtRltdInf&gt;</span>
+                <span class="nt">&lt;MndtId&gt;</span>XMPL.CUST487.2014<span class="nt">&lt;/MndtId&gt;</span>
+                <span class="nt">&lt;DtOfSgntr&gt;</span>2014-02-01<span class="nt">&lt;/DtOfSgntr&gt;</span>
+                <span class="nt">&lt;AmdmntInd&gt;</span>false<span class="nt">&lt;/AmdmntInd&gt;</span>
+              <span class="nt">&lt;/MndtRltdInf&gt;</span>
+            <span class="nt">&lt;/DrctDbtTx&gt;</span>
+            <span class="nt">&lt;DbtrAgt&gt;</span>
+              <span class="nt">&lt;FinInstnId&gt;</span>
+                <span class="nt">&lt;BIC&gt;</span>CUSTDEM0XXX<span class="nt">&lt;/BIC&gt;</span>
+              <span class="nt">&lt;/FinInstnId&gt;</span>
+            <span class="nt">&lt;/DbtrAgt&gt;</span>
+            <span class="nt">&lt;Dbtr&gt;</span>
+              <span class="nt">&lt;Nm&gt;</span>Example Customer<span class="nt">&lt;/Nm&gt;</span>
+            <span class="nt">&lt;/Dbtr&gt;</span>
+            <span class="nt">&lt;DbtrAcct&gt;</span>
+              <span class="nt">&lt;Id&gt;</span>
+                <span class="nt">&lt;IBAN&gt;</span>DE40987654329876543210<span class="nt">&lt;/IBAN&gt;</span>
+              <span class="nt">&lt;/Id&gt;</span>
+            <span class="nt">&lt;/DbtrAcct&gt;</span>
+            <span class="nt">&lt;RmtInf&gt;</span>
+              <span class="nt">&lt;Ustrd&gt;</span>INVOICE 54<span class="nt">&lt;/Ustrd&gt;</span>
+            <span class="nt">&lt;/RmtInf&gt;</span>
+          <span class="nt">&lt;/DrctDbtTxInf&gt;</span>
+        <span class="nt">&lt;/PmtInf&gt;</span>
+      <span class="nt">&lt;/CstmrDrctDbtInitn&gt;</span>
+    <span class="nt">&lt;/Document&gt;</span>
+</pre></div>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/kewisch">kewisch</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
