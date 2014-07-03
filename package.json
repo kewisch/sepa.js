@@ -2,7 +2,7 @@
   "author": "Philipp Kewisch",
   "name": "sepa.js",
   "description": "Create SEPA XML for business transactions",
-  "version": "0.5",
+  "version": "0.8.0",
   "repository": {
     "url": "https://github.com/kewisch/sepa.js"
   },
