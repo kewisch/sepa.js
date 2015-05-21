@@ -16,5 +16,6 @@
   "optionalDependencies": {},
   "engines": {
     "node": "*"
-  }
+  },
+  "main":"lib/sepa.js"
 }
