@@ -7,7 +7,7 @@
 function pad0(str, len) { var fmt = "", fmtsize = len; while(fmtsize--) fmt += "0"; return (fmt + str).substr(-len); }
 
 // Make your settings here
-var created = new Date()
+var created = new Date();
 var transIdFmt = "XMPL." + created.getFullYear() + pad0(created.getMonth() + 1, 2) + pad0(created.getDate(), 2) + ".TR0";
 var mandateFmt = "XMPL.CUST%id%.%sigdate.year%";
 var end2endFmt= "XMPL.CUST%id%.FEE." + created.getFullYear() + pad0(created.getMonth() + 1, 2);
@@ -97,10 +97,10 @@ function generateSEPA(customers) {
       tx.remittanceInfo = customer.formatString(remittanceInfo);
       tx.end2endId = customer.formatString(end2endFmt);
       try {
-        tx.validate()
+        tx.validate();
         info.addTransaction(tx);
       } catch (e) {
-        process.stderr.write("Invalid customer data: " + customer.join(","))
+        process.stderr.write("Invalid customer data: " + customer.join(","));
       }
   }
 
@@ -111,5 +111,5 @@ function generateSEPA(customers) {
 if (process.argv.length < 3 || !fs.lstatSync(process.argv[2]).isFile()) {
     process.stdout.write("Usage: node sepacsv.js <filename>\n");
 } else {
-    readCSV(process.argv[2])
+    readCSV(process.argv[2]);
 }

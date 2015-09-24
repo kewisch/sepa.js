@@ -6,8 +6,8 @@
 function process() {
   function e(id) { return document.getElementById(id); }
   function v(id) { return e(id).value; }
-  function d(id) { var x = e(id).date || new Date(e(id).value); return x.getTime() ? x : new Date() }
-  function n(id) { var x = v(id); return typeof x == "number" ? x : parseFloat(x, 10) }
+  function d(id) { var x = e(id).date || new Date(e(id).value); return x.getTime() ? x : new Date(); }
+  function n(id) { var x = v(id); return typeof x == "number" ? x : parseFloat(x, 10); }
 
   var doc = new SEPA.Document();
   doc.grpHdr.id = v("grpHdr-id");
@@ -34,7 +34,7 @@ function process() {
 
   var hdr = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
   //document.getElementById("results").textContent =  hdr + "\n" + vkbeautify.xml(doc.toString(), "  ");
-  var results = document.getElementById("results")
+  var results = document.getElementById("results");
   results.src = "data:text/xml," + hdr + doc.toString();
   results.style.display = "block";
   results.style.height = (document.body.scrollHeight - 40) + "px";
