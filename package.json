@@ -3,13 +3,13 @@
   "name": "sepa",
   "description": "Create SEPA XML for business transactions",
   "main":"lib/sepa.js",
-  "version": "0.8.4",
+  "version": "1.0.0",
   "repository": {
     "url": "https://github.com/kewisch/sepa.js"
   },
   "directories": {
     "example": "examples"
-  },  
+  },
   "dependencies": {
     "xmldom": "*"
   },
