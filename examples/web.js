@@ -23,9 +23,9 @@ function process() { // eslint-disable-line no-unused-vars
   doc.addPaymentInfo(info);
 
   var tx = new window.SEPA.Transaction();
-  tx.debitorName = v('tx-debitorName');
-  tx.debitorIBAN = v('tx-debitorIBAN');
-  tx.debitorBIC = v('tx-debitorBIC');
+  tx.debtorName = v('tx-debitorName');
+  tx.debtorIBAN = v('tx-debitorIBAN');
+  tx.debtorBIC = v('tx-debitorBIC');
   tx.mandateId = v('tx-mandateId');
   tx.mandateSignatureDate = d('tx-mandateSignatureDate');
   tx.amount = n('tx-amount');

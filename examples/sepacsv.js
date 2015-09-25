@@ -89,8 +89,8 @@ function generateSEPA(customers) {
     var customer = customers[i];
 
     var tx = new SEPA.Transaction();
-    tx.debitorName = customer.name;
-    tx.debitorIBAN = customer.iban;
+    tx.debtorName = customer.name;
+    tx.debtorIBAN = customer.iban;
     tx.mandateId = customer.formatString(mandateFmt);
     tx.mandateSignatureDate = customer.sigdate;
     tx.amount = transactionAmount;

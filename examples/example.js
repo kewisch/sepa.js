@@ -19,9 +19,9 @@ info.creditorId = 'DE98ZZZ09999999999';
 doc.addPaymentInfo(info);
 
 var tx = new SEPA.Transaction();
-tx.debitorName = 'Example Customer';
-tx.debitorIBAN = 'DE40987654329876543210';
-tx.debitorBIC = 'CUSTDEM0XXX';
+tx.debtorName = 'Example Customer';
+tx.debtorIBAN = 'DE40987654329876543210';
+tx.debtorBIC = 'CUSTDEM0XXX';
 tx.mandateId = 'XMPL.CUST487.2014';
 tx.mandateSignatureDate = new Date('2014-02-01');
 tx.amount = 50.23;
