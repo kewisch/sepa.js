@@ -10,10 +10,18 @@
   "directories": {
     "example": "examples"
   },
+  "pre-commit": [
+    "lint"
+  ],
+  "scripts": {
+    "lint": "eslint ."
+  },
   "dependencies": {
     "xmldom": "*"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "pre-commit": "*"
+  },
   "optionalDependencies": {},
   "engines": {
     "node": "*"
