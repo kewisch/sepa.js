@@ -93,7 +93,7 @@ doc.grpHdr.created = new Date();
 doc.grpHdr.initiatorName = "Example LLC";
 
 var info = doc.createPaymentInfo();
-info.collectionDate = new Date();
+info.requestedExecutionDate = new Date();
 info.debtorIBAN = "DE87123456781234567890";
 info.debtorBIC = "XMPLDEM0XXX";
 info.debtorName = "Example LLC";
