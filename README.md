@@ -41,11 +41,11 @@ SEPA.checksumIBAN("DE00123456781234567890");
 SEPA.validateCreditorID("DE98ZZZ09999999999");
 
 // Passing this Creditor ID with "00" as the checksum returns the
-// Creditor ID with the correct checksum, "DE98ZZZ09999999999". 
+// Creditor ID with the correct checksum, "DE98ZZZ09999999999".
 SEPA.checksumCreditorID("DE00ZZZ09999999999");
 ```
 
-Creating an XML Transfer Document
+Creating an XML DirectDebit Document
 ---------------------------------
 The main use case for sepa.js is creating an XML Document based on the
 [EBICS Specification](http://www.ebics.org/index.php?id=30).
@@ -54,12 +54,12 @@ omit the first line and include via script-tag or module loader instead.
 ```javascript
 var SEPA = require("sepa");
 
-var doc = new SEPA.Document();
+var doc = new SEPA.Document('pain.008.001.02');
 doc.grpHdr.id = "XMPL.20140201.TR0";
 doc.grpHdr.created = new Date();
 doc.grpHdr.initiatorName = "Example LLC";
 
-var info = new SEPA.PaymentInfo();
+var info = doc.createPaymentInfo();
 info.collectionDate = new Date();
 info.creditorIBAN = "DE87123456781234567890";
 info.creditorBIC = "XMPLDEM0XXX";
@@ -67,11 +67,44 @@ info.creditorName = "Example LLC";
 info.creditorId = "DE98ZZZ09999999999";
 doc.addPaymentInfo(info);
 
-var tx = new SEPA.Transaction();
-tx.debitorName = "Example Customer";
-tx.debitorIBAN = "DE40987654329876543210";
-tx.debitorBIC = "CUSTDEM0XXX";
-tx.mandateId = "XMPL.CUST487.2014"
+var tx = info.createTransaction();
+tx.debtorName = "Example Customer";
+tx.debtorIBAN = "DE40987654329876543210";
+tx.debtorBIC = "CUSTDEM0XXX";
+tx.mandateId = "XMPL.CUST487.2014";
+tx.mandateSignatureDate = new Date("2014-02-01");
+tx.amount = 50.23;
+tx.remittanceInfo = "INVOICE 54";
+tx.end2endId = "XMPL.CUST487.INVOICE.54";
+info.addTransaction(tx);
+
+console.log(doc.toString());
+```
+
+Creating an XML Transfer Document
+---------------------------------
+
+```javascript
+var SEPA = require("sepa");
+
+var doc = new SEPA.Document('pain.001.001.03');
+doc.grpHdr.id = "XMPL.20140201.TR0";
+doc.grpHdr.created = new Date();
+doc.grpHdr.initiatorName = "Example LLC";
+
+var info = doc.createPaymentInfo();
+info.requestedExecutionDate = new Date();
+info.debtorIBAN = "DE87123456781234567890";
+info.debtorBIC = "XMPLDEM0XXX";
+info.debtorName = "Example LLC";
+info.debtorId = "DE98ZZZ09999999999";
+doc.addPaymentInfo(info);
+
+var tx = info.createTransaction();
+tx.creditorName = "Example Customer";
+tx.creditorIBAN = "DE40987654329876543210";
+tx.creditorBIC = "CUSTDEM0XXX";
+tx.mandateId = "XMPL.CUST487.2014";
 tx.mandateSignatureDate = new Date("2014-02-01");
 tx.amount = 50.23;
 tx.remittanceInfo = "INVOICE 54";
