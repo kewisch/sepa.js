@@ -10,7 +10,7 @@ doc.grpHdr.id = 'XMPL.20140201.TR0';
 doc.grpHdr.created = new Date();
 doc.grpHdr.initiatorName = 'Example LLC';
 
-var info = new SEPA.PaymentInfo();
+var info = doc.createPaymentInfo();
 info.collectionDate = new Date();
 info.creditorIBAN = 'DE87123456781234567890';
 info.creditorBIC = 'XMPLDEM0XXX';
@@ -18,7 +18,7 @@ info.creditorName = 'Example LLC';
 info.creditorId = 'DE98ZZZ09999999999';
 doc.addPaymentInfo(info);
 
-var tx = new SEPA.Transaction();
+var tx = info.createTransaction();
 tx.debtorName = 'Example Customer';
 tx.debtorIBAN = 'DE40987654329876543210';
 tx.debtorBIC = 'CUSTDEM0XXX';

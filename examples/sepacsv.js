@@ -76,7 +76,7 @@ function generateSEPA(customers) {
   doc.grpHdr.created = created;
   doc.grpHdr.initiatorName = creditorName;
 
-  var info = new SEPA.PaymentInfo();
+  var info = doc.createPaymentInfo();
   info.collectionDate = new Date();
   info.creditorIBAN = creditorIBAN;
   info.creditorBIC = creditorBIC;
@@ -88,7 +88,7 @@ function generateSEPA(customers) {
   for (var i = 0; i < customers.length; i++) {
     var customer = customers[i];
 
-    var tx = new SEPA.Transaction();
+    var tx = info.createTransaction();
     tx.debtorName = customer.name;
     tx.debtorIBAN = customer.iban;
     tx.mandateId = customer.formatString(mandateFmt);

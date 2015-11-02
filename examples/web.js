@@ -14,7 +14,7 @@ function process() { // eslint-disable-line no-unused-vars
   doc.grpHdr.created = new Date();
   doc.grpHdr.initiatorName = v('grpHdr-initiatorName');
 
-  var info = new window.SEPA.PaymentInfo();
+  var info = doc.createPaymentInfo();
   info.collectionDate = d('info-collectionDate');
   info.creditorName = v('info-creditorName');
   info.creditorIBAN = v('info-creditorIBAN');
@@ -22,7 +22,7 @@ function process() { // eslint-disable-line no-unused-vars
   info.creditorId = v('info-creditorId');
   doc.addPaymentInfo(info);
 
-  var tx = new window.SEPA.Transaction();
+  var tx = info.createTransaction();
   tx.debtorName = v('tx-debitorName');
   tx.debtorIBAN = v('tx-debitorIBAN');
   tx.debtorBIC = v('tx-debitorBIC');
