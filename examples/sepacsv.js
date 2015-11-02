@@ -1,7 +1,7 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
- * Portions Copyright (C) Philipp Kewisch, 2014 */
+ * Portions Copyright (C) Philipp Kewisch, 2014-2015 */
 
 // Helper functions needed in settings
 function pad0(str, len) { var fmt = '', fmtsize = len; while(fmtsize--) fmt += '0'; return (fmt + str).substr(-len); }
