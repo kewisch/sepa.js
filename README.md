@@ -22,6 +22,8 @@ If you are missing something, please [create an issue](https://github.com/kewisc
 * You can add multiple paymentInfo blocks to a document, i.e one per sequenceType (FRST/RCUR)
 * A payment info block can contain multiple transactions.
 
+You can also check the full [XML file structure for Credit Transfer](https://businessbanking.bankofireland.com/fs/doc/wysiwyg/sepa-credit-transfer-pain-001-001-03-xml-file-structure-july-2013.pdf) (PAIN.001.001.03) if you want more details.
+
 Validating an IBAN or Creditor ID
 ---------------------------------
 
