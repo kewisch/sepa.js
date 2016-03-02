@@ -205,3 +205,8 @@ console.log(doc.toString());
   </CstmrDrctDbtInitn>
 </Document>
 ```
+
+Related Tools
+-------------
+
+[Online SEPA XML Validation](http://www.mobilefish.com/services/sepa_xml_validation/sepa_xml_validation.php) (Credit Transfer and Direct Debit Support)
