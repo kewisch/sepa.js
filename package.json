@@ -8,6 +8,7 @@
   "repository": {
     "url": "https://github.com/kewisch/sepa.js"
   },
+  "main": "/lib/sepa",
   "directories": {
     "example": "examples"
   },
