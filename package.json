@@ -18,7 +18,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "xmldom": "*"
+    "xmldom": "0.1.24"
   },
   "devDependencies": {
     "pre-commit": "*"
