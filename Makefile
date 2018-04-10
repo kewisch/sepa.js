@@ -4,4 +4,4 @@
 # Portions Copyright (C) Philipp Kewisch, 2014-2015
 
 minify:
-	(cd lib && uglifyjs -m -r 'exports,require' sepa.js > sepa.min.js)
+	(cd lib && ../node_modules/.bin/uglifyjs -m -r 'exports,require' sepa.js > sepa.min.js)
