@@ -21,7 +21,7 @@
     "xmldom": "*"
   },
   "devDependencies": {
-    "eslint": "^4.19.1",
+    "eslint": "*",
     "pre-commit": "*",
     "uglify-js": "^3.3.20"
   },
