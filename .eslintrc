@@ -1,5 +1,6 @@
 {
     "rules": {
+        "no-param-reassign": 0,
         "curly": [
             1,
             "multi-line"
@@ -20,11 +21,14 @@
             2,
             "always"
         ],
-        "no-console": [0]
+        "no-console": [1]
     },
     "env": {
-        "browser": true,
-        "node": true
+        "node": true,
+        "jest": true
     },
-    "extends": "eslint:recommended"
+    "parserOptions": {
+        "ecmaVersion": 6
+    },
+    "extends": ["eslint:recommended", "prettier"]
 }
