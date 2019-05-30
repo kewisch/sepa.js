@@ -205,3 +205,11 @@ console.log(doc.toString());
   </CstmrDrctDbtInitn>
 </Document>
 ```
+
+
+## Install and Publish
+
+```
+npm version [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease ]
+npm publish
+```
