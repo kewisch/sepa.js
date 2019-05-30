@@ -15,13 +15,18 @@
     "lint"
   ],
   "scripts": {
-    "lint": "./node_modules/.bin/eslint ."
+    "lint": "./node_modules/.bin/eslint .",
+    "version": "npm run build",
+    "postversion": "git push && git push --tags",
+    "test": "jest"
   },
   "dependencies": {
     "xmldom": "*"
   },
   "devDependencies": {
     "eslint": "*",
+    "eslint-plugin-jest": "^22.6.4",
+    "jest": "^24.8.0",
     "pre-commit": "*",
     "uglify-js": "^3.3.20"
   },
