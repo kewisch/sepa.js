@@ -15,8 +15,8 @@
     "lint"
   ],
   "scripts": {
-    "lint": "./node_modules/.bin/eslint .",
-    "test": "./node_modules/.bin/jest ."
+    "lint": "eslint .",
+    "test": "jest"
   },
   "dependencies": {
     "xmldom": "0.1.24"
