@@ -3,7 +3,7 @@
   "description": "Create SEPA XML for business transactions, fork of https://github.com/kewisch/sepa.js",
   "license": "MPL-2.0",
   "main": "lib/sepa.js",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "author": "Spendesk",
   "repository": {
     "url": "https://github.com/Spendesk/sepa.js"
