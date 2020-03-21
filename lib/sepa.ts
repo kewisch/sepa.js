@@ -15,6 +15,15 @@
  * SEPA.checksumCreditorID     -- function to calculate the creditor id checksum
  * SEPA.setIDSeparator         -- function to customize the ID separator when needed (defaults to '.')
  * SEPA.enableValidations      -- function to enable/disable fields validation
+ *  * SEPA.Document               -- class for creating SEPA XML Documents
+ * SEPA.PaymentInfo            -- class for SEPA payment information blocks
+ * SEPA.Transaction            -- class for generic transactions
+ * SEPA.validateIBAN           -- function to validate an IBAN
+ * SEPA.checksumIBAN           -- function to calculate the IBAN checksum
+ * SEPA.validateCreditorID     -- function to validate a creditor id
+ * SEPA.checksumCreditorID     -- function to calculate the creditor id checksum
+ * SEPA.setIDSeparator         -- function to customize the ID separator when needed (defaults to '.')
+ * SEPA.enableValidations      -- function to enable/disable fields validation
  */
 (function(exports) {
   var XSI_NAMESPACE = 'http://www.w3.org/2001/XMLSchema-instance';
@@ -34,6 +43,14 @@
   }
 
   var SEPATypes = {
+    'pain.001.001.02': 'pain.001.001.02',
+    'pain.001.003.02': 'pain.001.003.02',
+    'pain.001.001.03': 'CstmrCdtTrfInitn',
+    'pain.001.003.03': 'CstmrCdtTrfInitn',
+    'pain.008.001.01': 'pain.008.001.01',
+    'pain.008.003.01': 'pain.008.003.01',
+    'pain.008.001.02': 'CstmrDrctDbtInitn',
+    'pain.008.003.02': 'CstmrDrctDbtInitn'
     'pain.001.001.02': 'pain.001.001.02',
     'pain.001.003.02': 'pain.001.003.02',
     'pain.001.001.03': 'CstmrCdtTrfInitn',
@@ -62,8 +79,9 @@
   }
 
   function getPainXMLVersion(painFormat) {
+    /// Some comments 
     var inc = painFormat.indexOf('pain.008') === 0 ?  1 : 0;
-    return parseInt(painFormat.substr(-2), 10) + inc;
+    return parseInt(painFormat.substr(2), 10) + inc;
   }
 
   function SepaDocument(painFormat, options) {
@@ -954,6 +972,24 @@
    *  // Usage: r(rootNode, 'foo', 'bar', myValue)
    *  // Result: <root><foo><bar>myValue</bar></foo></root>
    *  var r = createXMLHelper(doc, true, true);
+   *  * SEPA.Document               -- class for creating SEPA XML Documents
+ * SEPA.PaymentInfo            -- class for SEPA payment information blocks
+ * SEPA.Transaction            -- class for generic transactions
+ * SEPA.validateIBAN           -- function to validate an IBAN
+ * SEPA.checksumIBAN           -- function to calculate the IBAN checksum
+ * SEPA.validateCreditorID     -- function to validate a creditor id
+ * SEPA.checksumCreditorID     -- function to calculate the creditor id checksum
+ * SEPA.setIDSeparator         -- function to customize the ID separator when needed (defaults to '.')
+ * SEPA.enableValidations      -- function to enable/disable fields validation
+ *  * SEPA.Document               -- class for creating SEPA XML Documents
+ * SEPA.PaymentInfo            -- class for SEPA payment information blocks
+ * SEPA.Transaction            -- class for generic transactions
+ * SEPA.validateIBAN           -- function to validate an IBAN
+ * SEPA.checksumIBAN           -- function to calculate the IBAN checksum
+ * SEPA.validateCreditorID     -- function to validate a creditor id
+ * SEPA.checksumCreditorID     -- function to calculate the creditor id checksum
+ * SEPA.setIDSeparator         -- function to customize the ID separator when needed (defaults to '.')
+ * SEPA.enableValidations      -- function to enable/disable fields validation
    *
    * @param doc         The document to create nodes with
    * @param required    If false, nodes with null values will not be added to the parent.
