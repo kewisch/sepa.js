@@ -67,6 +67,7 @@ info.creditorIBAN = "DE87123456781234567890";
 info.creditorBIC = "XMPLDEM0XXX";
 info.creditorName = "Example LLC";
 info.creditorId = "DE98ZZZ09999999999";
+info.batchBooking = true; //optional
 doc.addPaymentInfo(info);
 
 var tx = info.createTransaction();
@@ -76,6 +77,7 @@ tx.debtorBIC = "CUSTDEM0XXX";
 tx.mandateId = "XMPL.CUST487.2014";
 tx.mandateSignatureDate = new Date("2014-02-01");
 tx.amount = 50.23;
+tx.currency = 'EUR'; //optional
 tx.remittanceInfo = "INVOICE 54";
 tx.end2endId = "XMPL.CUST487.INVOICE.54";
 info.addTransaction(tx);

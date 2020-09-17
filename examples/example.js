@@ -3,14 +3,16 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  * Portions Copyright (C) Philipp Kewisch, 2014-2015 */
 
-var SEPA = require('sepa');
+var SEPA = require('../lib/');
 
+
+SEPA.enableValidations(true);
 var doc = new SEPA.Document();
 doc.grpHdr.id = 'XMPL.20140201.TR0';
 doc.grpHdr.created = new Date();
 doc.grpHdr.initiatorName = 'Example LLC';
 
-var info = doc.createPaymentInfo();
+const info = doc.createPaymentInfo();
 info.collectionDate = new Date();
 info.creditorIBAN = 'DE87123456781234567890';
 info.creditorBIC = 'XMPLDEM0XXX';

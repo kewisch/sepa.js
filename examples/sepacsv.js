@@ -46,11 +46,11 @@ function Customer(id, name, iban, sigdate) {
 
   this.formatString = function(fmt) {
     return fmt.replace('%id%', this.id)
-              .replace('%name%', this.name)
-              .replace('%iban%', this.iban)
-              .replace('%sigdate.year%', this.sigdate.getFullYear())
-              .replace('%sigdate.month%', this.sigdate.getMonth() + 1)
-              .replace('%sigdate.day%',  this.sigdate.getDate());
+      .replace('%name%', this.name)
+      .replace('%iban%', this.iban)
+      .replace('%sigdate.year%', this.sigdate.getFullYear())
+      .replace('%sigdate.month%', this.sigdate.getMonth() + 1)
+      .replace('%sigdate.day%',  this.sigdate.getDate());
   };
 }
 
