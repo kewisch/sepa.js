@@ -1,3 +1,6 @@
+Payfit specific: we publish the package using `npm publish` (no CI yet)
+--
+
 Welcome to sepa.js
 ==================
 
