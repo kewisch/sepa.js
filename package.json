@@ -1,29 +1,30 @@
 {
-  "author": "Philipp Kewisch",
   "name": "sepa",
+  "version": "2.1.0",
   "description": "Create SEPA XML for business transactions",
-  "license": "MPL-2.0",
-  "main": "lib/sepa.js",
-  "version": "1.0.4",
   "repository": {
     "url": "https://github.com/kewisch/sepa.js"
   },
+  "license": "MPL-2.0",
+  "main": "lib/index.js",
   "directories": {
     "example": "examples"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "jest"
   },
   "pre-commit": [
     "lint"
   ],
-  "scripts": {
-    "lint": "./node_modules/.bin/eslint ."
-  },
   "dependencies": {
-    "@xmldom/xmldom": "*"
+    "xmldom": "0.6.0"
   },
   "devDependencies": {
-    "eslint": "^8.39.0",
-    "pre-commit": "*",
-    "uglify-js": "^3.3.20"
+    "eslint": "8.41.0",
+    "eslint-config-prettier": "8.8.0",
+    "jest": "29.5.0",
+    "pre-commit": "1.2.2"
   },
   "engines": {
     "node": "*"
