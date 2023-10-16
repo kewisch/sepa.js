@@ -4,7 +4,7 @@
   "description": "Create SEPA XML for business transactions",
   "license": "MPL-2.0",
   "main": "lib/sepa.js",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "repository": {
     "url": "https://github.com/kewisch/sepa.js"
   },
@@ -15,7 +15,8 @@
     "lint"
   ],
   "scripts": {
-    "lint": "./node_modules/.bin/eslint ."
+    "lint": "./node_modules/.bin/eslint .",
+    "build": "uglifyjs -m reserved=['exports','require'] -o lib/sepa.min.js lib/sepa.js"
   },
   "dependencies": {
     "@xmldom/xmldom": "*"
