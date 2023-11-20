@@ -16,13 +16,16 @@
   ],
   "scripts": {
     "lint": "./node_modules/.bin/eslint .",
-    "build": "uglifyjs -m reserved=['exports','require'] -o lib/sepa.min.js lib/sepa.js"
+    "build": "uglifyjs -m reserved=['exports','require'] -o lib/sepa.min.js lib/sepa.js",
+    "test": "jest"
   },
   "dependencies": {
     "@xmldom/xmldom": "*"
   },
   "devDependencies": {
     "eslint": "^8.39.0",
+    "eslint-plugin-jest": "^27.6.0",
+    "jest": "^29.7.0",
     "pre-commit": "*",
     "uglify-js": "^3.3.20"
   },
