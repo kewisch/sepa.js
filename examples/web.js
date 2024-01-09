@@ -14,7 +14,7 @@ function process() {
   doc.grpHdr.created = new Date();
   doc.grpHdr.initiatorName = v("grpHdr-initiatorName");
 
-  var info = new SEPA.PaymentInfo();
+  var info = doc.createPaymentInfo();
   info.collectionDate = d("info-collectionDate");
   info.creditorName = v("info-creditorName");
   info.creditorIBAN = v("info-creditorIBAN");
@@ -22,10 +22,10 @@ function process() {
   info.creditorId = v("info-creditorId");
   doc.addPaymentInfo(info);
 
-  var tx = new SEPA.Transaction();
-  tx.debitorName = v("tx-debitorName");
-  tx.debitorIBAN = v("tx-debitorIBAN");
-  tx.debitorBIC = v("tx-debitorBIC");
+  var tx = info.createTransaction();
+  tx.debtorName = v("tx-debitorName");
+  tx.debtorIBAN = v("tx-debitorIBAN");
+  tx.debtorBIC = v("tx-debitorBIC");
   tx.mandateId = v("tx-mandateId");
   tx.mandateSignatureDate = d("tx-mandateSignatureDate");
   tx.amount = n("tx-amount");
@@ -35,7 +35,7 @@ function process() {
   var hdr = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
   //document.getElementById("results").textContent =  hdr + "\n" + vkbeautify.xml(doc.toString(), "  ");
   var results = document.getElementById("results")
-  results.src = "data:text/xml," + hdr + doc.toString();
+  results.src = "data:text/xml," + doc.toString();
   results.style.display = "block";
   results.style.height = (document.body.scrollHeight - 40) + "px";
 }
