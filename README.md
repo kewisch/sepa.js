@@ -54,7 +54,7 @@ omit the first line and include via script-tag or module loader instead.
 ```javascript
 var SEPA = require("sepa");
 
-var doc = new SEPA.Document('pain.008.001.02');
+var doc = new SEPA.Document('pain.008.001.08');
 doc.grpHdr.id = "XMPL.20140201.TR0";
 doc.grpHdr.created = new Date();
 doc.grpHdr.initiatorName = "Example LLC";
@@ -89,7 +89,7 @@ Creating an XML Transfer Document
 ```javascript
 var SEPA = require("sepa");
 
-var doc = new SEPA.Document('pain.001.001.03');
+var doc = new SEPA.Document('pain.001.001.09');
 doc.grpHdr.id = "XMPL.20140201.TR0";
 doc.grpHdr.created = new Date();
 doc.grpHdr.initiatorName = "Example LLC";
@@ -99,15 +99,12 @@ info.requestedExecutionDate = new Date();
 info.debtorIBAN = "DE87123456781234567890";
 info.debtorBIC = "XMPLDEM0XXX";
 info.debtorName = "Example LLC";
-info.debtorId = "DE98ZZZ09999999999";
 doc.addPaymentInfo(info);
 
 var tx = info.createTransaction();
 tx.creditorName = "Example Customer";
 tx.creditorIBAN = "DE40987654329876543210";
 tx.creditorBIC = "CUSTDEM0XXX";
-tx.mandateId = "XMPL.CUST487.2014";
-tx.mandateSignatureDate = new Date("2014-02-01");
 tx.amount = 50.23;
 tx.remittanceInfo = "INVOICE 54";
 tx.end2endId = "XMPL.CUST487.INVOICE.54";
@@ -118,90 +115,100 @@ console.log(doc.toString());
 
 ### XML Result
 ```xml
-<?xml version="1.0"?>
-<Document schemaLocation="urn:iso:std:iso:20022:tech:xsd:pain.008.003.02 pain.008.003.02.xsd">
-  <CstmrDrctDbtInitn>
-    <GrpHdr>
-      <MsgId>XMPL.20140201.TR0</MsgId>
-      <CreDtTm>2014-01-23T19:16:10.285Z</CreDtTm>
-      <NbOfTxs>1</NbOfTxs>
-      <CtrlSum>50.23</CtrlSum>
-      <InitgPty>
-        <Nm>Example LLC</Nm>
-      </InitgPty>
-    </GrpHdr>
-    <PmtInf>
-      <PmtInfId>XMPL.20140201.TR0.0</PmtInfId>
-      <PmtMtd>DD</PmtMtd>
-      <BtchBookg>true</BtchBookg>
-      <NbOfTxs>1</NbOfTxs>
-      <CtrlSum>50.23</CtrlSum>
-      <PmtTpInf>
-        <SvcLvl>
-          <Cd>SEPA</Cd>
-        </SvcLvl>
-        <LclInstrm>
-          <Cd>CORE</Cd>
-        </LclInstrm>
-        <SeqTp>FRST</SeqTp>
-      </PmtTpInf>
-      <ReqdColltnDt>2014-01-23</ReqdColltnDt>
-      <Cdtr>
-        <Nm>Example LLC</Nm>
-      </Cdtr>
-      <CdtrAcct>
-        <Id>
-          <IBAN>DE87123456781234567890</IBAN>
-        </Id>
-      </CdtrAcct>
-      <CdtrAgt>
-        <FinInstnId>
-          <BIC>XMPLDEM0XXX</BIC>
-        </FinInstnId>
-      </CdtrAgt>
-      <ChrgBr>SLEV</ChrgBr>
-      <CdtrSchmeId>
-        <Id>
-          <PrvtId>
-            <Othr>
-              <Id>DE98ZZZ09999999999</Id>
-              <SchmeNm>
-                <Prtry>SEPA</Prtry>
-              </SchmeNm>
-            </Othr>
-          </PrvtId>
-        </Id>
-      </CdtrSchmeId>
-      <DrctDbtTxInf>
-        <PmtId>
-          <EndToEndId>XMPL.CUST487.INVOICE.54</EndToEndId>
-        </PmtId>
-        <InstdAmt Ccy="EUR">50.23</InstdAmt>
-        <DrctDbtTx>
-          <MndtRltdInf>
-            <MndtId>XMPL.CUST487.2014</MndtId>
-            <DtOfSgntr>2014-02-01</DtOfSgntr>
-            <AmdmntInd>false</AmdmntInd>
-          </MndtRltdInf>
-        </DrctDbtTx>
-        <DbtrAgt>
-          <FinInstnId>
-            <BIC>CUSTDEM0XXX</BIC>
-          </FinInstnId>
-        </DbtrAgt>
-        <Dbtr>
-          <Nm>Example Customer</Nm>
-        </Dbtr>
-        <DbtrAcct>
-          <Id>
-            <IBAN>DE40987654329876543210</IBAN>
-          </Id>
-        </DbtrAcct>
-        <RmtInf>
-          <Ustrd>INVOICE 54</Ustrd>
-        </RmtInf>
-      </DrctDbtTxInf>
-    </PmtInf>
-  </CstmrDrctDbtInitn>
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:iso:std:iso:20022:tech:xsd:pain.008.001.08 pain.008.001.08.xsd"
+    xmlns="urn:iso:std:iso:20022:tech:xsd:pain.008.001.08">
+    <CstmrDrctDbtInitn>
+        <GrpHdr>
+            <MsgId>XMPL.20140201.TR0</MsgId>
+            <CreDtTm>2024-07-05T11:44:23</CreDtTm>
+            <NbOfTxs>1</NbOfTxs>
+            <CtrlSum>50.23</CtrlSum>
+            <InitgPty>
+                <Nm>Example LLC</Nm>
+            </InitgPty>
+        </GrpHdr>
+        <PmtInf>
+            <PmtInfId>XMPL.20140201.TR0.0</PmtInfId>
+            <PmtMtd>DD</PmtMtd>
+            <BtchBookg>true</BtchBookg>
+            <NbOfTxs>1</NbOfTxs>
+            <CtrlSum>50.23</CtrlSum>
+            <PmtTpInf>
+                <SvcLvl>
+                    <Cd>SEPA</Cd>
+                </SvcLvl>
+                <LclInstrm>
+                    <Cd>CORE</Cd>
+                </LclInstrm>
+                <SeqTp>FRST</SeqTp>
+            </PmtTpInf>
+            <ReqdColltnDt>2024-07-05</ReqdColltnDt>
+            <Cdtr>
+                <Nm>Example LLC</Nm>
+                <Id>
+                    <PrvtId>
+                        <Othr>
+                            <Id>DE98ZZZ09999999999</Id>
+                        </Othr>
+                    </PrvtId>
+                </Id>
+            </Cdtr>
+            <CdtrAcct>
+                <Id>
+                    <IBAN>DE87123456781234567890</IBAN>
+                </Id>
+            </CdtrAcct>
+            <CdtrAgt>
+                <FinInstnId>
+                    <BICFI>XMPLDEM0XXX</BICFI>
+                </FinInstnId>
+            </CdtrAgt>
+            <ChrgBr>SLEV</ChrgBr>
+            <CdtrSchmeId>
+                <Id>
+                    <PrvtId>
+                        <Othr>
+                            <Id>DE98ZZZ09999999999</Id>
+                            <SchmeNm>
+                                <Prtry>SEPA</Prtry>
+                            </SchmeNm>
+                        </Othr>
+                    </PrvtId>
+                </Id>
+            </CdtrSchmeId>
+            <DrctDbtTxInf>
+                <PmtId>
+                    <InstrId>XMPL.20140201.TR0.0.0</InstrId>
+                    <EndToEndId>XMPL.CUST487.INVOICE.54</EndToEndId>
+                </PmtId>
+                <InstdAmt Ccy="EUR">50.23</InstdAmt>
+                <DrctDbtTx>
+                    <MndtRltdInf>
+                        <MndtId>XMPL.CUST487.2014</MndtId>
+                        <DtOfSgntr>2014-02-01</DtOfSgntr>
+                        <AmdmntInd>false</AmdmntInd>
+                    </MndtRltdInf>
+                </DrctDbtTx>
+                <DbtrAgt>
+                    <FinInstnId>
+                        <BICFI>CUSTDEM0XXX</BICFI>
+                    </FinInstnId>
+                </DbtrAgt>
+                <Dbtr>
+                    <Nm>Example Customer</Nm>
+                </Dbtr>
+                <DbtrAcct>
+                    <Id>
+                        <IBAN>DE40987654329876543210</IBAN>
+                    </Id>
+                </DbtrAcct>
+                <RmtInf>
+                    <Ustrd>INVOICE 54</Ustrd>
+                </RmtInf>
+            </DrctDbtTxInf>
+        </PmtInf>
+    </CstmrDrctDbtInitn>
 </Document>
 ```

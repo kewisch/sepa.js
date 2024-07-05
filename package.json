@@ -28,7 +28,8 @@
     "jest": "^29.7.0",
     "pre-commit": "*",
     "uglify-js": "^3.3.20",
-    "xpath": "^0.0.33"
+    "xpath": "^0.0.33",
+    "xsd-validator": "^1.1.1"
   },
   "engines": {
     "node": "*"
