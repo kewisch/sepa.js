@@ -11,6 +11,11 @@
   "directories": {
     "example": "examples"
   },
+  "files": [
+    "README.md",
+    "lib/sepa.js",
+    "lib/sepa.min.js"
+  ],
   "pre-commit": [
     "lint"
   ],
