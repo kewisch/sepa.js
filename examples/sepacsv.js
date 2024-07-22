@@ -100,7 +100,7 @@ function generateSEPA(customers) {
       tx.validate();
       info.addTransaction(tx);
     } catch (e) {
-      process.stderr.write('Invalid customer data: ' + customer.join(','));
+      process.stderr.write(`Invalid customer data (${e}): ${customer.join(',')}`);
     }
   }
 
