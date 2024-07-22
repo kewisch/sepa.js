@@ -4,7 +4,7 @@
   "description": "Create SEPA XML for business transactions",
   "license": "MPL-2.0",
   "main": "lib/sepa.js",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "repository": {
     "url": "https://github.com/kewisch/sepa.js"
   },
