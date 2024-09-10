@@ -41,5 +41,6 @@
   },
   "engines": {
     "node": "*"
-  }
+  },
+  "types": "lib/index.d.ts"
 }
