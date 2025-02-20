@@ -14,7 +14,8 @@
   "files": [
     "README.md",
     "lib/sepa.js",
-    "lib/sepa.min.js"
+    "lib/sepa.min.js",
+    "types/sepa.d.ts"
   ],
   "pre-commit": [
     "lint"
@@ -42,5 +43,5 @@
   "engines": {
     "node": "*"
   },
-  "types": "lib/index.d.ts"
+  "types": "types/sepa.d.ts"
 }
