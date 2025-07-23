@@ -168,6 +168,8 @@ declare module "sepa" {
 
     /** Id assigned to the creditor */
     creditorId: string;
+    /** Original Id assigned to the creditor */
+    originalCreditorId: string;
     /** Name of the creditor */
     creditorName: string;
     /** Street of the creditor */
