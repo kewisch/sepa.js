@@ -16,6 +16,7 @@ info.creditorIBAN = 'DE87123456781234567890';
 info.creditorBIC = 'XMPLDEM0XXX';
 info.creditorName = 'Example LLC';
 info.creditorId = 'DE98ZZZ09999999999';
+info.originalCreditorId = 'IT66ZZZA1B2C3D4E5F6G7H8';
 doc.addPaymentInfo(info);
 
 var tx = info.createTransaction();
