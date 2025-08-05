@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
-    "@stylistic/eslint-plugin": "^4.4.1",
+    "@stylistic/eslint-plugin": "^5.2.2",
     "eslint": "^9.29.0",
     "eslint-plugin-jest": "^29.0.1",
     "globals": "^16.2.0",
