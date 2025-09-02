@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         node:
-          - latest
+          - 20
           - lts/*
     steps:
       - name: "Checkout"
