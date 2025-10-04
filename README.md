@@ -1,5 +1,4 @@
-Welcome to sepa.js
-==================
+# Welcome to sepa.js
 
 This library can be used to generate the XML structure used
 for [SEPA](http://en.wikipedia.org/wiki/Single_Euro_Payments_Area) payment
@@ -18,12 +17,11 @@ If you have extended sepa.js for a different purpose, please contribute the code
 either via email or ideally as a [pull request](https://github.com/kewisch/sepa.js/pulls).
 If you are missing something, please [create an issue](https://github.com/kewisch/sepa.js/issues).
 
-* Each SEPA document contains exactly one group header, accessible via the `grpHdr` property.
-* You can add multiple paymentInfo blocks to a document, i.e one per sequenceType (FRST/RCUR)
-* A payment info block can contain multiple transactions.
+- Each SEPA document contains exactly one group header, accessible via the `grpHdr` property.
+- You can add multiple paymentInfo blocks to a document, i.e one per sequenceType (FRST/RCUR)
+- A payment info block can contain multiple transactions.
 
-Validating an IBAN or Creditor ID
----------------------------------
+## Validating an IBAN or Creditor ID
 
 You can use sepa.js to validate IBAN and Creditor ID numbers or calculate their checksum. Here is an example:
 
@@ -45,16 +43,17 @@ SEPA.validateCreditorID("DE98ZZZ09999999999");
 SEPA.checksumCreditorID("DE00ZZZ09999999999");
 ```
 
-Creating an XML DirectDebit Document
----------------------------------
+## Creating an XML DirectDebit Document
+
 The main use case for sepa.js is creating an XML Document based on the
 [EBICS Specification](http://www.ebics.org/index.php?id=30).
 Here is a simple node.js example. If you want to use the browser instead, just
 omit the first line and include via script-tag or module loader instead.
+
 ```javascript
 var SEPA = require("sepa");
 
-var doc = new SEPA.Document('pain.008.001.08');
+var doc = new SEPA.Document("pain.008.001.08");
 doc.grpHdr.id = "XMPL.20140201.TR0";
 doc.grpHdr.created = new Date();
 doc.grpHdr.initiatorName = "Example LLC";
@@ -64,8 +63,7 @@ info.collectionDate = new Date();
 info.creditorIBAN = "DE87123456781234567890";
 info.creditorBIC = "XMPLDEM0XXX";
 info.creditorName = "Example LLC";
-info.creditorId = "DE98ZZZ09999999999";
-info.originalCreditorId = "IT66ZZZA1B2C3D4E5F6G7H8"; //optional
+info.creditorId = "DE98ZZZ09999999999"; // Current creditor scheme ID
 info.batchBooking = true; //optional
 doc.addPaymentInfo(info);
 
@@ -76,21 +74,25 @@ tx.debtorBIC = "CUSTDEM0XXX";
 tx.mandateId = "XMPL.CUST487.2014";
 tx.mandateSignatureDate = new Date("2014-02-01");
 tx.amount = 50.23;
-tx.currency = 'EUR'; //optional
+tx.currency = "EUR"; //optional
 tx.remittanceInfo = "INVOICE 54";
 tx.end2endId = "XMPL.CUST487.INVOICE.54";
+// For mandate amendments (e.g., ICS migration), use per-transaction amendment:
+tx.amendment = {
+  isAmended: true,
+  originalCreditorSchemeId: "IT66ZZZA1B2C3D4E5F6G7H8", // Old ICS
+};
 info.addTransaction(tx);
 
 console.log(doc.toString());
 ```
 
-Creating an XML Transfer Document
----------------------------------
+## Creating an XML Transfer Document
 
 ```javascript
 var SEPA = require("sepa");
 
-var doc = new SEPA.Document('pain.001.001.09');
+var doc = new SEPA.Document("pain.001.001.09");
 doc.grpHdr.id = "XMPL.20140201.TR0";
 doc.grpHdr.created = new Date();
 doc.grpHdr.initiatorName = "Example LLC";
@@ -115,6 +117,7 @@ console.log(doc.toString());
 ```
 
 ### XML Result
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
