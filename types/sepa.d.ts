@@ -66,13 +66,12 @@ declare module "sepa" {
   }
 
   /**
-   * Amendment information for mandate changes
+   * Amendment information for mandate changes.
+   * The presence of originalCreditorSchemeId automatically marks this as an amended mandate.
    */
   interface Amendment {
-    /** Whether this is an amended mandate */
-    isAmended: boolean;
     /** The original creditor scheme identifier (old ICS) for ICS migration */
-    originalCreditorSchemeId?: string;
+    originalCreditorSchemeId: string;
   }
 
   /**
@@ -181,6 +180,11 @@ declare module "sepa" {
 
     /** Id assigned to the creditor */
     creditorId: string;
+    /**
+     * @deprecated Use transaction-level amendment.originalCreditorSchemeId instead.
+     * Original creditor id (for backward compatibility - will be applied only to first transaction without explicit amendment)
+     */
+    originalCreditorId: string | null;
     /** Name of the creditor */
     creditorName: string;
     /** Street of the creditor */

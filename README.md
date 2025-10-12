@@ -77,9 +77,8 @@ tx.amount = 50.23;
 tx.currency = "EUR"; //optional
 tx.remittanceInfo = "INVOICE 54";
 tx.end2endId = "XMPL.CUST487.INVOICE.54";
-// For mandate amendments (e.g., ICS migration), use per-transaction amendment:
+// For mandate amendments (e.g., ICS migration), use per-transaction amendment
 tx.amendment = {
-  isAmended: true,
   originalCreditorSchemeId: "IT66ZZZA1B2C3D4E5F6G7H8", // Old ICS
 };
 info.addTransaction(tx);

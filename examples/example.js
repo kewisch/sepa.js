@@ -42,7 +42,6 @@ tx2.remittanceInfo = 'INVOICE 87';
 tx2.end2endId = 'XMPL.CUST999.INVOICE.87';
 // Set amendment information for ICS migration
 tx2.amendment = {
-  isAmended: true,
   originalCreditorSchemeId: 'IT66ZZZA1B2C3D4E5F6G7H8' // Old creditor scheme ID
 };
 info.addTransaction(tx2);
