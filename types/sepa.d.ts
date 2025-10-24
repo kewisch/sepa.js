@@ -41,7 +41,7 @@ declare module "sepa" {
   class SepaGroupHeader {
     private _painFormat: string;
     id: string;
-    created: Date | string;
+    created: Date;
     transactionCount: number;
     initiatorName: string;
     controlSum: number;
@@ -96,8 +96,8 @@ declare module "sepa" {
     purposeCode: string | null;
     /** The mandate id of the debtor */
     mandateId: string;
-    /** The signature date of the mandate */
-    mandateSignatureDate: Date | string | null;
+    /** The signature date of the mandate. Required for DirectDebit documents.*/
+    mandateSignatureDate: Date | null;
 
     /** Name of the debtor */
     debtorName: string;
@@ -173,10 +173,10 @@ declare module "sepa" {
      * 'FNAL' - Final transfer
      */
     sequenceType: "FRST" | "RCUR" | "OOFF" | "FNAL";
-    /** Requested collection date */
-    collectionDate: Date | string | null;
-    /** Execution date of the SEPA order */
-    requestedExecutionDate: Date | string | null;
+    /** Requested collection date. Required for DirectDebit documents. */
+    collectionDate: Date | null;
+    /** Execution date of the SEPA order. Required for Transfer documents. */
+    requestedExecutionDate: Date | null;
 
     /** Id assigned to the creditor */
     creditorId: string;
