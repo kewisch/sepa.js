@@ -32,10 +32,9 @@ function process() { // eslint-disable-line no-unused-vars
   tx.remittanceInfo = v('tx-remittanceInfo');
   info.addTransaction(tx);
 
-  var hdr = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
   //document.getElementById('results').textContent =  hdr + '\n' + vkbeautify.xml(doc.toString(), '  ');
   var results = document.getElementById('results');
-  results.src = 'data:text/xml,' + hdr + doc.toString();
+  results.src = 'data:text/xml,' + doc.toString();
   results.style.display = 'block';
   results.style.height = (document.body.scrollHeight - 40) + 'px';
 }

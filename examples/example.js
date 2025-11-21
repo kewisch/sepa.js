@@ -33,7 +33,7 @@ info.addTransaction(tx1);
 // Transaction with mandate amendment (e.g., migrated from old creditor ID)
 var tx2 = info.createTransaction();
 tx2.debtorName = 'Another Customer';
-tx2.debtorIBAN = 'DE89876543210987654321';
+tx2.debtorIBAN = 'DE02500105170137075030';
 tx2.debtorBIC = 'CUSTDEM0XXX';
 tx2.mandateId = 'XMPL.CUST999.2014';
 tx2.mandateSignatureDate = new Date('2014-01-15');
