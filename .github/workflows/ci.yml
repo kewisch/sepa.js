@@ -17,7 +17,9 @@ jobs:
       matrix:
         node:
           - 20
-          - lts/*
+          # we cannot use the lts version here because our transitive dependency libxmljs is no longer maintained
+          # and does not run with node >= 22
+          # - lts/*
     steps:
       - name: "Checkout"
         uses: actions/checkout@v4
