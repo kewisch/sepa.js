@@ -5,7 +5,7 @@ import jest from 'eslint-plugin-jest';
 
 export default [
   {
-    ignores: ['lib/sepa.min.js'],
+    ignores: ['dist'],
   },
   js.configs.recommended,
   {
