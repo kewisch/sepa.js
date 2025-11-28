@@ -39,8 +39,10 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release upload ${{ github.event.release.tag_name }} \
-            lib/sepa.js \
-            lib/sepa.min.js \
+            dist/sepa.js \
+            dist/sepa.min.js \
+            dist/sepa.es5.js \
+            dist/sepa.es5.min.js
 
       - name: "npm publish"
         run: npm publish
