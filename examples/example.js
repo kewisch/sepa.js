@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  * Portions Copyright (C) Philipp Kewisch, 2014-2015 */
 
-var SEPA = require('sepa');
+import SEPA from 'sepa';
 
 var doc = new SEPA.Document();
 doc.grpHdr.id = 'XMPL.20140201.TR0';

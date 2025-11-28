@@ -13,21 +13,28 @@
   },
   "files": [
     "README.md",
-    "lib/sepa.js",
-    "lib/sepa.min.js",
-    "types/sepa.d.ts"
+    "dist/sepa.js",
+    "dist/sepa.min.js",
+    "dist/sepa.es5.js",
+    "dist/sepa.es5.min.js",
+    "dist/types/sepa.d.ts"
   ],
+  "exports": {
+    "import": "./dist/sepa.js",
+    "require": "./dist/sepa.es5.js",
+    "types": "./dist/types/sepa.d.ts"
+  },
   "pre-commit": [
     "lint"
   ],
   "scripts": {
     "lint": "eslint",
-    "build": "uglifyjs -m reserved=['exports','require'] -o lib/sepa.min.js lib/sepa.js",
-    "test": "jest"
+    "build": "rollup -c",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
-  "dependencies": {},
   "devDependencies": {
     "@eslint/js": "^9.39.0",
+    "@rollup/plugin-terser": "^0.4.4",
     "@stylistic/eslint-plugin": "^5.5.0",
     "@xmldom/xmldom": "^0.9.8",
     "eslint": "^9.39.0",
@@ -35,12 +42,14 @@
     "globals": "^16.5.0",
     "jest": "^30.2.0",
     "pre-commit": "*",
-    "uglify-js": "^3.19.3",
+    "rollup": "^4.53.3",
+    "rollup-plugin-copy": "^3.5.0",
     "xpath": "^0.0.34",
     "xsd-validator": "^1.1.1"
   },
   "engines": {
     "node": "*"
   },
-  "types": "types/sepa.d.ts"
+  "type": "module",
+  "types": "dist/types/sepa.d.ts"
 }
