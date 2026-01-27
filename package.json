@@ -33,16 +33,16 @@
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.0",
+    "@eslint/js": "^9.39.2",
     "@rollup/plugin-terser": "^0.4.4",
-    "@stylistic/eslint-plugin": "^5.5.0",
+    "@stylistic/eslint-plugin": "^5.7.1",
     "@xmldom/xmldom": "^0.9.8",
-    "eslint": "^9.39.0",
-    "eslint-plugin-jest": "^29.0.1",
-    "globals": "^16.5.0",
+    "eslint": "^9.39.2",
+    "eslint-plugin-jest": "^29.12.1",
+    "globals": "^17.1.0",
     "jest": "^30.2.0",
     "pre-commit": "*",
-    "rollup": "^4.53.3",
+    "rollup": "^4.57.0",
     "rollup-plugin-copy": "^3.5.0",
     "xpath": "^0.0.34",
     "xsd-validator": "^1.1.1"
