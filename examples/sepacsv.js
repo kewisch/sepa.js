@@ -3,6 +3,10 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  * Portions Copyright (C) Philipp Kewisch, 2014-2015 */
 
+import SEPA from 'sepa';
+import csv from 'fast-csv';
+import fs from 'fs';
+
 // Helper functions needed in settings
 function pad0(str, len) { var fmt = '', fmtsize = len; while(fmtsize--) fmt += '0'; return (fmt + str).substr(-len); }
 
@@ -19,24 +23,20 @@ var creditorName = 'Example LLC';
 var sequenceType = 'FRST';
 var transactionAmount = 5;
 
-function CSV_READ_ID(data) { return data[0]; }
-function CSV_READ_NAME(data) { return data[15]; }
+function CSV_READ_ID(data) { return data.payment_info_id; }
+function CSV_READ_NAME(data) { return data.debtor_name; }
 function CSV_READ_IBAN(data) {
-  if (!data[16] && data[12] && data[13]) {
+  if (!data.debtor_iban && data.debtor_account_number && data.debtor_bank_code) {
     // If there is no IBAN, put it together from the old account data. Adapt
     // for your country.
-    return SEPA.checksumIBAN('DE00' + pad0(data[13], 8) + pad0(data[12], 10));
+    return SEPA.checksumIBAN('DE00' + data.debtor_bank_code.padStart(8, '0') + data.debtor_account_number.padStart(10, '0'));
   } else {
-    return data[16];
+    return data.debtor_iban;
   }
 }
-function CSV_READ_SIGDATE(data) { return new Date(data[4]); }
-function CSV_ACCEPT_ROW(data) { return !data[5]; }
+function CSV_READ_SIGDATE(data) { return new Date(data.requested_execution_date); }
+function CSV_ACCEPT_ROW(data) { return data.accept == 'yes'; }
 // End Settings
-
-var SEPA = require('sepa');
-var csv = require('fast-csv');
-var fs = require('fs');
 
 function Customer(id, name, iban, sigdate) {
   this.id = id;
@@ -56,7 +56,7 @@ function Customer(id, name, iban, sigdate) {
 
 function readCSV(fname) {
   var customers = [];
-  csv.fromPath(fname).on('record', function(data){
+  csv.parseFile(fname, { headers: true }).on('data', function(data){
     var id = CSV_READ_ID(data);
     var name = CSV_READ_NAME(data);
     var iban = CSV_READ_IBAN(data);

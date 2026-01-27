@@ -1,0 +1,4 @@
+payment_info_id,debtor_name,debtor_iban,debtor_bic,amount,currency,requested_execution_date,remittance_information,accept
+PMT001,Example Debtor GmbH,DE93999999990000000001,TESTDEFFXXX,125.50,EUR,2026-01-27T13:21:38Z,Rechnung 1001,yes
+PMT001,Example Debtor GmbH,DE66999999990000000002,TESTDEFFXXX,89.99,EUR,2026-01-27T14:45:21Z,Rechnung 1002,yes
+PMT001,Example Debtor GmbH,DE39999999990000000003,TESTDEFXXX,250.00,EUR,2026-01-27T18:54:21Z,Mitgliedsbeitrag 2026,no
