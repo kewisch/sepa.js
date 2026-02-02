@@ -3,8 +3,11 @@
   "name": "sepa",
   "description": "Create SEPA XML for business transactions",
   "license": "MPL-2.0",
-  "main": "lib/sepa.js",
-  "version": "2.1.0",
+  "main": "dist/sepa.es5.cjs",
+  "module": "dist/sepa.js",
+  "version": "3.0.0pre2",
+  "type": "module",
+  "types": "dist/types/sepa.d.ts",
   "repository": {
     "url": "https://github.com/kewisch/sepa.js"
   },
@@ -15,14 +18,16 @@
     "README.md",
     "dist/sepa.js",
     "dist/sepa.min.js",
-    "dist/sepa.es5.js",
-    "dist/sepa.es5.min.js",
+    "dist/sepa.es5.cjs",
+    "dist/sepa.es5.min.cjs",
     "dist/types/sepa.d.ts"
   ],
   "exports": {
-    "import": "./dist/sepa.js",
-    "require": "./dist/sepa.es5.js",
-    "types": "./dist/types/sepa.d.ts"
+    ".": {
+      "import": "./dist/sepa.js",
+      "require": "./dist/sepa.es5.cjs",
+      "types": "./dist/types/sepa.d.ts"
+    }
   },
   "pre-commit": [
     "lint"
@@ -30,6 +35,7 @@
   "scripts": {
     "lint": "eslint",
     "build": "rollup -c",
+    "prepare": "npm run build",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "devDependencies": {
@@ -49,7 +55,5 @@
   },
   "engines": {
     "node": "*"
-  },
-  "type": "module",
-  "types": "dist/types/sepa.d.ts"
+  }
 }
