@@ -5,7 +5,7 @@
   "license": "MPL-2.0",
   "main": "dist/sepa.es5.cjs",
   "module": "dist/sepa.js",
-  "version": "3.0.0pre2",
+  "version": "3.0.0",
   "type": "module",
   "types": "dist/types/sepa.d.ts",
   "repository": {
