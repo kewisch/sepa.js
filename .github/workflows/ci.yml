@@ -16,10 +16,8 @@ jobs:
     strategy:
       matrix:
         node:
-          - 24
-          # we cannot use the lts version here because our transitive dependency libxmljs is no longer maintained
-          # and does not run with node > 24
-          # - lts/*
+          - latest
+          - lts/*
     steps:
       - name: "Checkout"
         uses: actions/checkout@v4
@@ -46,5 +44,8 @@ jobs:
         if: matrix.node == 'latest'
         with:
           path: |
-            lib/sepa.js
-            lib/sepa.min.js
+            dist/sepa.js
+            dist/sepa.min.js
+            dist/sepa.es5.cjs
+            dist/sepa.es5.min.cjs
+            dist/types/sepa.d.ts
