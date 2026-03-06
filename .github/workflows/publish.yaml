@@ -52,4 +52,4 @@ jobs:
             dist/types/sepa.d.ts
 
       - name: "npm publish"
-        run: npm publish
+        run: npm publish --provenance
