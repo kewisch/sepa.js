@@ -42,12 +42,14 @@ jobs:
       - name: "Attach release assets"
         env:
           GH_TOKEN: ${{ github.token }}
+          TAG_NAME: ${{ github.event.release.tag_name }}
         run: |
-          gh release upload ${{ github.event.release.tag_name }} \
+          gh release upload $TAG_NAME \
             dist/sepa.js \
             dist/sepa.min.js \
-            dist/sepa.es5.js \
-            dist/sepa.es5.min.js
+            dist/sepa.es5.cjs \
+            dist/sepa.es5.min.cjs \
+            dist/types/sepa.d.ts
 
       - name: "npm publish"
         run: npm publish
