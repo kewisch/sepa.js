@@ -40,23 +40,18 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@fastify/pre-commit": "^2.2.1",
     "@rollup/plugin-terser": "^1.0.0",
     "@stylistic/eslint-plugin": "^5.10.0",
     "@xmldom/xmldom": "^0.9.8",
-    "eslint": "^10.0.2",
+    "eslint": "^10.0.3",
     "eslint-plugin-jest": "^29.15.0",
     "globals": "^17.4.0",
     "jest": "^30.2.0",
-    "pre-commit": "*",
+    "libxml2-wasm": "^0.7.0",
     "rollup": "^4.59.0",
     "rollup-plugin-copy": "^3.5.0",
-    "xpath": "^0.0.34",
-    "xsd-validator": "^1.1.1"
-  },
-  "overrides": {
-    "xsd-validator": {
-      "libxmljs": "github:libxmljs/libxmljs#v1.0.12"
-    }
+    "xpath": "^0.0.34"
   },
   "engines": {
     "node": "*"
