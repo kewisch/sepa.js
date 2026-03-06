@@ -8,14 +8,11 @@ on:
   release:
     types: [published]
 
-permissions:
-  id-token: write
-  contents: read
-
 jobs:
   publish:
     runs-on: ubuntu-latest
     permissions:
+      id-token: write
       contents: write
     steps:
       - name: "Checkout"
