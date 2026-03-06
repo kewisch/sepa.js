@@ -16,9 +16,9 @@ jobs:
     strategy:
       matrix:
         node:
-          - 20
+          - 24
           # we cannot use the lts version here because our transitive dependency libxmljs is no longer maintained
-          # and does not run with node >= 22
+          # and does not run with node > 24
           # - lts/*
     steps:
       - name: "Checkout"
