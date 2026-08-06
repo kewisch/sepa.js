@@ -101,9 +101,9 @@ declare module "sepa" {
 
     /** Name of the debtor */
     debtorName: string;
-    /** Street of the debtor */
+    /** @deprecated Use debtorAddressLines and the structured debtor address fields instead. */
     debtorStreet: string | null;
-    /** City of the debtor */
+    /** @deprecated Use debtorTownName instead. */
     debtorCity: string | null;
     /** Country of the debtor */
     debtorCountry: string | null;
@@ -111,6 +111,19 @@ declare module "sepa" {
     debtorIBAN: string;
     /** BIC of the debtor */
     debtorBIC: string;
+
+    /** Street name of the debtor (<StrtNm>) */
+    debtorStreetName: string | null;
+    /** Building number of the debtor (<BldgNb>) */
+    debtorBuildingNumber: string | null;
+    /** Post code of the debtor (<PstCd>) */
+    debtorPostCode: string | null;
+    /** Town name of the debtor (<TwnNm>) */
+    debtorTownName: string | null;
+    /** Country sub division of the debtor (<CtrySubDvsn>) */
+    debtorCountrySubDivision: string | null;
+    /** Unstructured address lines of the debtor (<AdrLine>), at most 7 entries of 70 characters */
+    debtorAddressLines: string[] | null;
 
     /** Unstructured Remittance Info */
     remittanceInfo: string;
@@ -126,9 +139,9 @@ declare module "sepa" {
 
     /** Name of the creditor */
     creditorName: string;
-    /** Street of the creditor */
+    /** @deprecated Use creditorAddressLines and the structured creditor address fields instead. */
     creditorStreet: string | null;
-    /** City of the creditor */
+    /** @deprecated Use creditorTownName instead. */
     creditorCity: string | null;
     /** Country of the creditor */
     creditorCountry: string | null;
@@ -136,6 +149,19 @@ declare module "sepa" {
     creditorIBAN: string;
     /** BIC of the creditor */
     creditorBIC: string;
+
+    /** Street name of the creditor (<StrtNm>) */
+    creditorStreetName: string | null;
+    /** Building number of the creditor (<BldgNb>) */
+    creditorBuildingNumber: string | null;
+    /** Post code of the creditor (<PstCd>) */
+    creditorPostCode: string | null;
+    /** Town name of the creditor (<TwnNm>) */
+    creditorTownName: string | null;
+    /** Country sub division of the creditor (<CtrySubDvsn>) */
+    creditorCountrySubDivision: string | null;
+    /** Unstructured address lines of the creditor (<AdrLine>), at most 7 entries of 70 characters */
+    creditorAddressLines: string[] | null;
 
     constructor(painFormat: string);
     validate(): void;
@@ -187,9 +213,9 @@ declare module "sepa" {
     originalCreditorId: string | null;
     /** Name of the creditor */
     creditorName: string;
-    /** Street of the creditor */
+    /** @deprecated Use creditorAddressLines and the structured creditor address fields instead. */
     creditorStreet: string | null;
-    /** City of the creditor */
+    /** @deprecated Use creditorTownName instead. */
     creditorCity: string | null;
     /** Country of the creditor */
     creditorCountry: string | null;
@@ -198,13 +224,26 @@ declare module "sepa" {
     /** BIC of the creditor */
     creditorBIC: string;
 
+    /** Street name of the creditor (<StrtNm>) */
+    creditorStreetName: string | null;
+    /** Building number of the creditor (<BldgNb>) */
+    creditorBuildingNumber: string | null;
+    /** Post code of the creditor (<PstCd>) */
+    creditorPostCode: string | null;
+    /** Town name of the creditor (<TwnNm>) */
+    creditorTownName: string | null;
+    /** Country sub division of the creditor (<CtrySubDvsn>) */
+    creditorCountrySubDivision: string | null;
+    /** Unstructured address lines of the creditor (<AdrLine>), at most 7 entries of 70 characters */
+    creditorAddressLines: string[] | null;
+
     /** Id assigned to the debtor for Transfer payments */
     debtorId: string;
     /** Name of the debtor */
     debtorName: string;
-    /** Street of the debtor */
+    /** @deprecated Use debtorAddressLines and the structured debtor address fields instead. */
     debtorStreet: string | null;
-    /** City of the debtor */
+    /** @deprecated Use debtorTownName instead. */
     debtorCity: string | null;
     /** Country of the debtor */
     debtorCountry: string | null;
@@ -212,6 +251,19 @@ declare module "sepa" {
     debtorIBAN: string;
     /** BIC of the debtor */
     debtorBIC: string;
+
+    /** Street name of the debtor (<StrtNm>) */
+    debtorStreetName: string | null;
+    /** Building number of the debtor (<BldgNb>) */
+    debtorBuildingNumber: string | null;
+    /** Post code of the debtor (<PstCd>) */
+    debtorPostCode: string | null;
+    /** Town name of the debtor (<TwnNm>) */
+    debtorTownName: string | null;
+    /** Country sub division of the debtor (<CtrySubDvsn>) */
+    debtorCountrySubDivision: string | null;
+    /** Unstructured address lines of the debtor (<AdrLine>), at most 7 entries of 70 characters */
+    debtorAddressLines: string[] | null;
 
     /** SEPA order priority */
     instructionPriority: "HIGH" | "NORM";
