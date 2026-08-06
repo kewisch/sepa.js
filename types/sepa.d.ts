@@ -122,7 +122,7 @@ declare module "sepa" {
     debtorTownName: string | null;
     /** Country sub division of the debtor (<CtrySubDvsn>) */
     debtorCountrySubDivision: string | null;
-    /** Unstructured address lines of the debtor (<AdrLine>), at most 7 entries of 70 characters */
+    /** Unstructured address lines of the debtor (<AdrLine>), at most 7 entries of 70 characters (5 for pain.001.001.02) */
     debtorAddressLines: string[] | null;
 
     /** Unstructured Remittance Info */
@@ -160,7 +160,7 @@ declare module "sepa" {
     creditorTownName: string | null;
     /** Country sub division of the creditor (<CtrySubDvsn>) */
     creditorCountrySubDivision: string | null;
-    /** Unstructured address lines of the creditor (<AdrLine>), at most 7 entries of 70 characters */
+    /** Unstructured address lines of the creditor (<AdrLine>), at most 7 entries of 70 characters (5 for pain.001.001.02) */
     creditorAddressLines: string[] | null;
 
     constructor(painFormat: string);
@@ -234,7 +234,7 @@ declare module "sepa" {
     creditorTownName: string | null;
     /** Country sub division of the creditor (<CtrySubDvsn>) */
     creditorCountrySubDivision: string | null;
-    /** Unstructured address lines of the creditor (<AdrLine>), at most 7 entries of 70 characters */
+    /** Unstructured address lines of the creditor (<AdrLine>), at most 7 entries of 70 characters (5 for pain.001.001.02) */
     creditorAddressLines: string[] | null;
 
     /** Id assigned to the debtor for Transfer payments */
@@ -262,7 +262,7 @@ declare module "sepa" {
     debtorTownName: string | null;
     /** Country sub division of the debtor (<CtrySubDvsn>) */
     debtorCountrySubDivision: string | null;
-    /** Unstructured address lines of the debtor (<AdrLine>), at most 7 entries of 70 characters */
+    /** Unstructured address lines of the debtor (<AdrLine>), at most 7 entries of 70 characters (5 for pain.001.001.02) */
     debtorAddressLines: string[] | null;
 
     /** SEPA order priority */
