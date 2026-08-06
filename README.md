@@ -115,6 +115,41 @@ info.addTransaction(tx);
 console.log(doc.toString());
 ```
 
+## Postal Addresses
+
+Payment info blocks and transactions expose the structured ISO 20022 postal
+address elements for their parties (`creditor*` / `debtor*`), emitted in the
+schema sequence order:
+
+| Field                          | ISO element     |
+| ------------------------------ | --------------- |
+| `creditorStreetName`           | `<StrtNm>`      |
+| `creditorBuildingNumber`       | `<BldgNb>`      |
+| `creditorPostCode`             | `<PstCd>`       |
+| `creditorTownName`             | `<TwnNm>`       |
+| `creditorCountrySubDivision`   | `<CtrySubDvsn>` |
+| `creditorCountry`              | `<Ctry>`        |
+| `creditorAddressLines`         | `<AdrLine>` (up to 7 entries) |
+
+```javascript
+// Fully structured address
+tx.creditorStreetName = "Rue de la Paix";
+tx.creditorBuildingNumber = "42";
+tx.creditorPostCode = "75002";
+tx.creditorTownName = "Paris";
+tx.creditorCountry = "FR";
+
+// Hybrid address: structured locality, street part kept unstructured
+tx.creditorPostCode = "75002";
+tx.creditorTownName = "Paris";
+tx.creditorCountry = "FR";
+tx.creditorAddressLines = ["123 Rue de la Paix", "Batiment B"];
+```
+
+The legacy `creditorStreet`/`creditorCity` (and `debtorStreet`/`debtorCity`)
+fields are deprecated. Their output is preserved for backward compatibility,
+and the structured fields take precedence when both are set.
+
 ### XML Result
 
 ```xml
