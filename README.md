@@ -131,6 +131,22 @@ schema sequence order:
 | `creditorCountry`              | `<Ctry>`        |
 | `creditorAddressLines`         | `<AdrLine>` (up to 7 entries) |
 
+The 2019 formats (`pain.001.001.09`, `pain.008.001.08`) use `PostalAddress24`,
+which adds the following elements. Setting one of them on an older format
+throws a validation error (`Department` and `SubDepartment` are only rejected
+by `pain.001.001.02`).
+
+| Field                          | ISO element     |
+| ------------------------------ | --------------- |
+| `creditorDepartment`           | `<Dept>`        |
+| `creditorSubDepartment`        | `<SubDept>`     |
+| `creditorBuildingName`         | `<BldgNm>`      |
+| `creditorFloor`                | `<Flr>`         |
+| `creditorPostBox`              | `<PstBx>`       |
+| `creditorRoom`                 | `<Room>`        |
+| `creditorTownLocationName`     | `<TwnLctnNm>`   |
+| `creditorDistrictName`         | `<DstrctNm>`    |
+
 ```javascript
 // Fully structured address
 tx.creditorStreetName = "Rue de la Paix";
