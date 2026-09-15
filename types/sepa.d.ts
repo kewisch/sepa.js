@@ -122,6 +122,22 @@ declare module "sepa" {
     debtorTownName: string | null;
     /** Country sub division of the debtor (<CtrySubDvsn>) */
     debtorCountrySubDivision: string | null;
+    /** Department of the debtor (<Dept>), not supported by pain.001.001.02 */
+    debtorDepartment: string | null;
+    /** Sub department of the debtor (<SubDept>), not supported by pain.001.001.02 */
+    debtorSubDepartment: string | null;
+    /** Building name of the debtor (<BldgNm>), only supported by pain.001.001.09 and pain.008.001.08 */
+    debtorBuildingName: string | null;
+    /** Floor of the debtor (<Flr>), only supported by pain.001.001.09 and pain.008.001.08 */
+    debtorFloor: string | null;
+    /** Post box of the debtor (<PstBx>), only supported by pain.001.001.09 and pain.008.001.08 */
+    debtorPostBox: string | null;
+    /** Room of the debtor (<Room>), only supported by pain.001.001.09 and pain.008.001.08 */
+    debtorRoom: string | null;
+    /** Town location name of the debtor (<TwnLctnNm>), only supported by pain.001.001.09 and pain.008.001.08 */
+    debtorTownLocationName: string | null;
+    /** District name of the debtor (<DstrctNm>), only supported by pain.001.001.09 and pain.008.001.08 */
+    debtorDistrictName: string | null;
     /** Unstructured address lines of the debtor (<AdrLine>), at most 7 entries of 70 characters (5 for pain.001.001.02) */
     debtorAddressLines: string[] | null;
 
@@ -160,6 +176,22 @@ declare module "sepa" {
     creditorTownName: string | null;
     /** Country sub division of the creditor (<CtrySubDvsn>) */
     creditorCountrySubDivision: string | null;
+    /** Department of the creditor (<Dept>), not supported by pain.001.001.02 */
+    creditorDepartment: string | null;
+    /** Sub department of the creditor (<SubDept>), not supported by pain.001.001.02 */
+    creditorSubDepartment: string | null;
+    /** Building name of the creditor (<BldgNm>), only supported by pain.001.001.09 and pain.008.001.08 */
+    creditorBuildingName: string | null;
+    /** Floor of the creditor (<Flr>), only supported by pain.001.001.09 and pain.008.001.08 */
+    creditorFloor: string | null;
+    /** Post box of the creditor (<PstBx>), only supported by pain.001.001.09 and pain.008.001.08 */
+    creditorPostBox: string | null;
+    /** Room of the creditor (<Room>), only supported by pain.001.001.09 and pain.008.001.08 */
+    creditorRoom: string | null;
+    /** Town location name of the creditor (<TwnLctnNm>), only supported by pain.001.001.09 and pain.008.001.08 */
+    creditorTownLocationName: string | null;
+    /** District name of the creditor (<DstrctNm>), only supported by pain.001.001.09 and pain.008.001.08 */
+    creditorDistrictName: string | null;
     /** Unstructured address lines of the creditor (<AdrLine>), at most 7 entries of 70 characters (5 for pain.001.001.02) */
     creditorAddressLines: string[] | null;
 
@@ -234,6 +266,22 @@ declare module "sepa" {
     creditorTownName: string | null;
     /** Country sub division of the creditor (<CtrySubDvsn>) */
     creditorCountrySubDivision: string | null;
+    /** Department of the creditor (<Dept>), not supported by pain.001.001.02 */
+    creditorDepartment: string | null;
+    /** Sub department of the creditor (<SubDept>), not supported by pain.001.001.02 */
+    creditorSubDepartment: string | null;
+    /** Building name of the creditor (<BldgNm>), only supported by pain.001.001.09 and pain.008.001.08 */
+    creditorBuildingName: string | null;
+    /** Floor of the creditor (<Flr>), only supported by pain.001.001.09 and pain.008.001.08 */
+    creditorFloor: string | null;
+    /** Post box of the creditor (<PstBx>), only supported by pain.001.001.09 and pain.008.001.08 */
+    creditorPostBox: string | null;
+    /** Room of the creditor (<Room>), only supported by pain.001.001.09 and pain.008.001.08 */
+    creditorRoom: string | null;
+    /** Town location name of the creditor (<TwnLctnNm>), only supported by pain.001.001.09 and pain.008.001.08 */
+    creditorTownLocationName: string | null;
+    /** District name of the creditor (<DstrctNm>), only supported by pain.001.001.09 and pain.008.001.08 */
+    creditorDistrictName: string | null;
     /** Unstructured address lines of the creditor (<AdrLine>), at most 7 entries of 70 characters (5 for pain.001.001.02) */
     creditorAddressLines: string[] | null;
 
@@ -262,6 +310,22 @@ declare module "sepa" {
     debtorTownName: string | null;
     /** Country sub division of the debtor (<CtrySubDvsn>) */
     debtorCountrySubDivision: string | null;
+    /** Department of the debtor (<Dept>), not supported by pain.001.001.02 */
+    debtorDepartment: string | null;
+    /** Sub department of the debtor (<SubDept>), not supported by pain.001.001.02 */
+    debtorSubDepartment: string | null;
+    /** Building name of the debtor (<BldgNm>), only supported by pain.001.001.09 and pain.008.001.08 */
+    debtorBuildingName: string | null;
+    /** Floor of the debtor (<Flr>), only supported by pain.001.001.09 and pain.008.001.08 */
+    debtorFloor: string | null;
+    /** Post box of the debtor (<PstBx>), only supported by pain.001.001.09 and pain.008.001.08 */
+    debtorPostBox: string | null;
+    /** Room of the debtor (<Room>), only supported by pain.001.001.09 and pain.008.001.08 */
+    debtorRoom: string | null;
+    /** Town location name of the debtor (<TwnLctnNm>), only supported by pain.001.001.09 and pain.008.001.08 */
+    debtorTownLocationName: string | null;
+    /** District name of the debtor (<DstrctNm>), only supported by pain.001.001.09 and pain.008.001.08 */
+    debtorDistrictName: string | null;
     /** Unstructured address lines of the debtor (<AdrLine>), at most 7 entries of 70 characters (5 for pain.001.001.02) */
     debtorAddressLines: string[] | null;
 
