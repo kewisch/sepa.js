@@ -115,6 +115,21 @@ info.addTransaction(tx);
 console.log(doc.toString());
 ```
 
+## Structured Remittance Information
+
+A transaction can carry a structured creditor reference, for example an ISO
+11649 reference (`RF...`), instead of the free text `remittanceInfo`. It is
+used when `reference` is set. The type code and the issuer are optional, and
+the issuer needs a type code.
+
+```javascript
+tx.structuredRemittanceInfo = {
+  typeCode: "SCOR", // one of RADM, RPIN, FXDR, DISP, PUOR or SCOR
+  issuer: "ISO",
+  reference: "RF18539007547034", // at most 35 characters
+};
+```
+
 ## Postal Addresses
 
 Payment info blocks and transactions expose the structured ISO 20022 postal

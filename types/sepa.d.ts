@@ -143,10 +143,13 @@ declare module "sepa" {
 
     /** Unstructured Remittance Info */
     remittanceInfo: string;
-    /** Structured Remittance Info */
+    /** Structured Remittance Info, used instead of remittanceInfo when reference is set */
     structuredRemittanceInfo: {
+      /** Type of the reference, one of RADM, RPIN, FXDR, DISP, PUOR or SCOR (<Cd>), optional */
       typeCode: string;
+      /** Issuer of the reference, for example ISO (<Issr>), optional and requires a typeCode */
       issuer: string;
+      /** Creditor reference, for example an ISO 11649 reference, at most 35 characters (<Ref>) */
       reference: string;
     };
 
